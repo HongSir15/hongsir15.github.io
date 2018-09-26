@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>SVN入门教程（三）--上传文件到SVN服务器 | HongSir&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="HongSir,HongSir's Blog" />
+  
+  <meta name="description" content="本文主要介绍如何在自己的电脑上用SVN客户端上传文件到SVN服务器。">
+<meta name="keywords" content="SVN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SVN入门教程（三）--上传文件到SVN服务器">
+<meta property="og:url" content="http://yoursite.com/2016/09/02/SVN/SVN Learn Basic 03/index.html">
+<meta property="og:site_name" content="HongSir&#39;s Blog">
+<meta property="og:description" content="本文主要介绍如何在自己的电脑上用SVN客户端上传文件到SVN服务器。">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:image" content="https://hansir1321.oss-cn-shanghai.aliyuncs.com/svn/svn_0020.png">
+<meta property="og:image" content="https://hansir1321.oss-cn-shanghai.aliyuncs.com/svn/svn_0021.png">
+<meta property="og:image" content="https://hansir1321.oss-cn-shanghai.aliyuncs.com/svn/svn_0022.png">
+<meta property="og:image" content="https://hansir1321.oss-cn-shanghai.aliyuncs.com/svn/svn_0023.png">
+<meta property="og:image" content="https://hansir1321.oss-cn-shanghai.aliyuncs.com/svn/svn_0024.png">
+<meta property="og:image" content="https://hansir1321.oss-cn-shanghai.aliyuncs.com/svn/svn_0025.png">
+<meta property="og:image" content="https://hansir1321.oss-cn-shanghai.aliyuncs.com/svn/svn_0026.png">
+<meta property="og:updated_time" content="2018-09-26T01:11:31.316Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SVN入门教程（三）--上传文件到SVN服务器">
+<meta name="twitter:description" content="本文主要介绍如何在自己的电脑上用SVN客户端上传文件到SVN服务器。">
+<meta name="twitter:image" content="https://hansir1321.oss-cn-shanghai.aliyuncs.com/svn/svn_0020.png">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">HongSir&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/">
+                        <i class="fa fa-home"></i>
+                        <span>主页</span>
+                    </a>
+                    
+                    <a  href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>归档</span>
+                    </a>
+                    
+                    <a  href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>关于</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        HongSir&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        一个专注 WEB 开发的技术博客
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="MinHow" target="_blank" href="//minhow.com">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/wongminho">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" target="_blank" href="//weibo.com/WongMinHo">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                        <a title="Twitter" target="_blank" href="//twitter.com/huangminhow">
+                            <i class="fa fa-twitter fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-SVN/SVN Learn Basic 03" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      SVN入门教程（三）--上传文件到SVN服务器
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/SVN/">SVN</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2016-09-02
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <blockquote>
+<p>  本文主要介绍如何在自己的电脑上用SVN客户端上传文件到SVN服务器。</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>　　通过前面的<a href="http://www.jiang-yu.cn/2016/09/01/SVN/SVN%20Learn%20Basic02/" target="_blank" rel="noopener">SVN入门教程（二）–下载文件到本地计算机</a>,我们可以知道如何从SVN上下载文件了，是不是很鸡冻呢，哈哈，但是可能突然有一天，你的领导叫你写一个公司的新员工入职流程指导的文档并且需要上传到SVN服务器，因为这个文档要给到你们公司的研发部的新入职的员工小江以及以后新入职的员工，所以你需要将文档保存到公司一个公共的存放文档的地方——SVN文件服务器（就是一个统一管理公司的各个部门的相关文档），本篇博文就是指导你如何将一个新建的文件上传到SVN服务器。</p>
+<h2 id="第一步：确定你需要上传文件到服务器中的位置"><a href="#第一步：确定你需要上传文件到服务器中的位置" class="headerlink" title="第一步：确定你需要上传文件到服务器中的位置"></a>第一步：确定你需要上传文件到服务器中的位置</h2><p>　　所谓的“文件服务器中的位置”可以理解为百度云盘中的一个目录，如下图所示：<br>　　<img src="https://hansir1321.oss-cn-shanghai.aliyuncs.com/svn/svn_0020.png" alt="JDK_CONFG_CHECK"><br>　　理解了上面的概念之后，确定了要存放文件的目录，比如：(<a href="https://www.jiang-yu.cn/svn/document/新员工天地),下面我们就开始第二步了。" target="_blank" rel="noopener">https://www.jiang-yu.cn/svn/document/新员工天地),下面我们就开始第二步了。</a></p>
+<h2 id="第二步：添加文件操作"><a href="#第二步：添加文件操作" class="headerlink" title="第二步：添加文件操作"></a>第二步：添加文件操作</h2><p>　　首先，有了第一步中的链接，比如：【<a href="https://www.jiang-yu.cn/svn/document/新员工天地】" target="_blank" rel="noopener">https://www.jiang-yu.cn/svn/document/新员工天地】</a> 这个目录之后，你需要按照教程二中的步骤，将该文件夹下的文件先下载到本地目录中，比如：HR_DOCUMENT目录下，然后将自己编辑好了文件复制到该目录下（或者直接在这个目录下创建一个新的文件，编辑好之后保存），这里以：aaa.doc文件为例，如下图所示：<br>　　<img src="https://hansir1321.oss-cn-shanghai.aliyuncs.com/svn/svn_0021.png" alt="JDK_CONFG_CHECK"><br>　　然后，执行SVN的添加操作，如下图所示：<br>　　<img src="https://hansir1321.oss-cn-shanghai.aliyuncs.com/svn/svn_0022.png" alt="JDK_CONFG_CHECK"><br>　　最后，执行添加操作完成之后，我们可以查看文件的变化，会在文件上出现一个蓝色的加号，<br>　　【文件的变化】如下图所示：<br>　　<img src="https://hansir1321.oss-cn-shanghai.aliyuncs.com/svn/svn_0023.png" alt="JDK_CONFG_CHECK"><br>　　【文件夹的变化–如果有修改（就是和服务器上的文件有不一样，比如：修改、新增）和 服务器上的文件不一致】如下图所示：<br>　　<img src="https://hansir1321.oss-cn-shanghai.aliyuncs.com/svn/svn_0024.png" alt="JDK_CONFG_CHECK"></p>
+<h2 id="第三步：提交文件菜单操作"><a href="#第三步：提交文件菜单操作" class="headerlink" title="第三步：提交文件菜单操作"></a>第三步：提交文件菜单操作</h2><p>　　上面两步正确操作之后，在文件上右键点击出现菜单中选择SVN Commit，如下图所示：<br>　　<img src="https://hansir1321.oss-cn-shanghai.aliyuncs.com/svn/svn_0025.png" alt="JDK_CONFG_CHECK"></p>
+<h2 id="第四步：填写提交备注信息"><a href="#第四步：填写提交备注信息" class="headerlink" title="第四步：填写提交备注信息"></a>第四步：填写提交备注信息</h2><p>　　最后，出现一个填写备注的弹出框，这里需要说明一下，就是每次提交文件（也就是对文件有修改操作，新增操作，删除操作的话都需要填写操作的原因和影响的文件）都要填写操作备注，养成这样的好习惯，对后面操作是有帮助的，如下图所示，可以按照给出的模板操作：</p>
+<blockquote>
+<p>【提 交 人】：江xx<br>【文件说明】：新增了新员工入职指导文件<br>【修改说明】：<br>　　1.修改了xxx文件<br>　　2.删除了xxx文件<br>【影响范围】：</p>
+</blockquote>
+<p>　　<img src="https://hansir1321.oss-cn-shanghai.aliyuncs.com/svn/svn_0026.png" alt="JDK_CONFG_CHECK"></p>
+<h2 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h2><p>　　通过上面的四步操作，基本上可以掌握了如何将自己写好的文档资源提交到SVN服务器了，然后你就可以将链接地址：<a href="https://www.jiang-yu.cn/svn/document/aaa.doc" target="_blank" rel="noopener">https://www.jiang-yu.cn/svn/document/aaa.doc</a> 发给新入职的员工小江了，哈哈，是不是很简单啊，如果想更深层次的了解SVN的使用，请继续关注哦，后面会给出SVN编辑文件后提交的教程。</p>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2018年09月26日 09:11</p>
+        <p>原始链接： <a class="post-url" href="/2016/09/02/SVN/SVN Learn Basic 03/" title="SVN入门教程（三）--上传文件到SVN服务器">http://yoursite.com/2016/09/02/SVN/SVN Learn Basic 03/</a></p>
+        <footer>
+            <a href="http://yoursite.com">
+                <img src="/images/logo.png" alt="HongSir">
+                HongSir
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃糖~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.jpg">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2016/09/02/SVN/SVN Learn Basic 03/&title=《SVN入门教程（三）--上传文件到SVN服务器》 — HongSir's Blog&pic=https://hansir1321.oss-cn-shanghai.aliyuncs.com/svn/svn_0025.png" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2016/09/02/SVN/SVN Learn Basic 03/&title=《SVN入门教程（三）--上传文件到SVN服务器》 — HongSir's Blog&source=
+  本文主要介绍如何在自己的电脑上用SVN客户端上传文件到SVN服务器。
+" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/09/02/SVN/SVN Learn Basic 03/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《SVN入门教程（三）--上传文件到SVN服务器》 — HongSir's Blog&url=http://yoursite.com/2016/09/02/SVN/SVN Learn Basic 03/&via=http://yoursite.com" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2016/09/02/SVN/SVN Learn Basic 03/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2016/09/02/SVN/SVN Learn Basic 03/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/SVN/" class="color4">SVN</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前言"><span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第一步：确定你需要上传文件到服务器中的位置"><span class="post-toc-text">第一步：确定你需要上传文件到服务器中的位置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第二步：添加文件操作"><span class="post-toc-text">第二步：添加文件操作</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第三步：提交文件菜单操作"><span class="post-toc-text">第三步：提交文件菜单操作</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第四步：填写提交备注信息"><span class="post-toc-text">第四步：填写提交备注信息</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#结束语"><span class="post-toc-text">结束语</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2017/02/06/HTML5/HTML块元素介绍/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          【HTML知识点004】HTML块
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2016/09/01/SVN/SVN Learn Basic02/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">SVN入门教程（二）--下载文件到本地计算机</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2018 HongSir<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "http://yoursite.com",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/HTML/">HTML</a><a class="category-link" href="/categories/Markdown/">Markdown</a><a class="category-link" href="/categories/NodeJS/">NodeJS</a><a class="category-link" href="/categories/SVN/">SVN</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/HTML/" style="font-size: 20px;">HTML</a> <a href="/tags/Markdown-syntax/" style="font-size: 10px;">Markdown syntax</a> <a href="/tags/NodeJS/" style="font-size: 10px;">NodeJS</a> <a href="/tags/SVN/" style="font-size: 15px;">SVN</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/">
+                    <i class="fa fa-home"></i><span>主页</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/archives">
+                    <i class="fa fa-archive"></i><span>归档</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/about">
+                    <i class="fa fa-user"></i><span>关于</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/HTML/" style="font-size: 20px;">HTML</a> <a href="/tags/Markdown-syntax/" style="font-size: 10px;">Markdown syntax</a> <a href="/tags/NodeJS/" style="font-size: 10px;">NodeJS</a> <a href="/tags/SVN/" style="font-size: 15px;">SVN</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+</body>
+</html>
