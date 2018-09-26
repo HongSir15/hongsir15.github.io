@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Git的基本使用--将本地的文件Push到Github | HongSir&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="HongSir,HongSir's Blog" />
+  
+  <meta name="description" content="Git的基本使用–将本地的文件Push到GithubStep 1 : 在本地创建一个文件夹,然后用GitBash打开文件夹所在的路径，执行git init命令1git init 执行完成之后，会出现一个.git的隐藏文件夹，此时这个文件夹就相当于变成了一个本地的git仓库。 Step 2 : 将需要提交的文件都粘贴到该文件夹下，使用git status查看文件的状态 Step 3 : 使用git">
+<meta name="keywords" content="GIT">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git的基本使用--将本地的文件Push到Github">
+<meta property="og:url" content="http://yoursite.com/2017/08/07/Git/Git的基本使用/index.html">
+<meta property="og:site_name" content="HongSir&#39;s Blog">
+<meta property="og:description" content="Git的基本使用–将本地的文件Push到GithubStep 1 : 在本地创建一个文件夹,然后用GitBash打开文件夹所在的路径，执行git init命令1git init 执行完成之后，会出现一个.git的隐藏文件夹，此时这个文件夹就相当于变成了一个本地的git仓库。 Step 2 : 将需要提交的文件都粘贴到该文件夹下，使用git status查看文件的状态 Step 3 : 使用git">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:image" content="https://hansir1321.oss-cn-shanghai.aliyuncs.com/git/gitinit.png">
+<meta property="og:image" content="https://hansir1321.oss-cn-shanghai.aliyuncs.com/git/GitStatusUntrackedFiles.png">
+<meta property="og:image" content="https://hansir1321.oss-cn-shanghai.aliyuncs.com/git/GitAdd.png">
+<meta property="og:image" content="https://hansir1321.oss-cn-shanghai.aliyuncs.com/git//GitCommit.png">
+<meta property="og:image" content="https://hansir1321.oss-cn-shanghai.aliyuncs.com/git/GitRemote.png">
+<meta property="og:image" content="https://hansir1321.oss-cn-shanghai.aliyuncs.com/git/GitPush.png">
+<meta property="og:image" content="https://hansir1321.oss-cn-shanghai.aliyuncs.com/git/result01.png">
+<meta property="og:updated_time" content="2018-09-26T03:49:52.190Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Git的基本使用--将本地的文件Push到Github">
+<meta name="twitter:description" content="Git的基本使用–将本地的文件Push到GithubStep 1 : 在本地创建一个文件夹,然后用GitBash打开文件夹所在的路径，执行git init命令1git init 执行完成之后，会出现一个.git的隐藏文件夹，此时这个文件夹就相当于变成了一个本地的git仓库。 Step 2 : 将需要提交的文件都粘贴到该文件夹下，使用git status查看文件的状态 Step 3 : 使用git">
+<meta name="twitter:image" content="https://hansir1321.oss-cn-shanghai.aliyuncs.com/git/gitinit.png">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">HongSir&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/">
+                        <i class="fa fa-home"></i>
+                        <span>主页</span>
+                    </a>
+                    
+                    <a  href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>归档</span>
+                    </a>
+                    
+                    <a  href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>关于</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        HongSir&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        对代码保持一颗敬畏之心
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="HongSir" target="_blank" href="https://hongsir15.github.io">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="https://github.com/HongSir15">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-Git/Git的基本使用" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      Git的基本使用--将本地的文件Push到Github
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/GIT/">GIT</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2017-08-07
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h3 id="Git的基本使用–将本地的文件Push到Github"><a href="#Git的基本使用–将本地的文件Push到Github" class="headerlink" title="Git的基本使用–将本地的文件Push到Github"></a>Git的基本使用–将本地的文件Push到Github</h3><h5 id="Step-1-在本地创建一个文件夹-然后用GitBash打开文件夹所在的路径，执行git-init命令"><a href="#Step-1-在本地创建一个文件夹-然后用GitBash打开文件夹所在的路径，执行git-init命令" class="headerlink" title="Step 1 : 在本地创建一个文件夹,然后用GitBash打开文件夹所在的路径，执行git init命令"></a>Step 1 : 在本地创建一个文件夹,然后用GitBash打开文件夹所在的路径，执行git init命令</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
+<p><img src="https://hansir1321.oss-cn-shanghai.aliyuncs.com/git/gitinit.png" alt="Git Init"><br>执行完成之后，会出现一个.git的隐藏文件夹，此时这个文件夹就相当于变成了一个本地的git仓库。</p>
+<h5 id="Step-2-将需要提交的文件都粘贴到该文件夹下，使用git-status查看文件的状态"><a href="#Step-2-将需要提交的文件都粘贴到该文件夹下，使用git-status查看文件的状态" class="headerlink" title="Step 2 : 将需要提交的文件都粘贴到该文件夹下，使用git status查看文件的状态"></a>Step 2 : 将需要提交的文件都粘贴到该文件夹下，使用git status查看文件的状态</h5><p><img src="https://hansir1321.oss-cn-shanghai.aliyuncs.com/git/GitStatusUntrackedFiles.png" alt="Git Status"></p>
+<h5 id="Step-3-使用git-add-将本地文件添加到本地仓库"><a href="#Step-3-使用git-add-将本地文件添加到本地仓库" class="headerlink" title="Step 3 : 使用git add . 将本地文件添加到本地仓库"></a>Step 3 : 使用git add . 将本地文件<strong>添加</strong>到本地仓库</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure>
+<p><img src="https://hansir1321.oss-cn-shanghai.aliyuncs.com/git/GitAdd.png" alt="Git Add"></p>
+<h5 id="Step-4-执行git-commit-m-“Comment”-将本地文件提交到本地仓库"><a href="#Step-4-执行git-commit-m-“Comment”-将本地文件提交到本地仓库" class="headerlink" title="Step 4 : 执行git commit -m “Comment” 将本地文件提交到本地仓库"></a>Step 4 : 执行git commit -m “Comment” 将本地文件<strong>提交</strong>到本地仓库</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m <span class="string">"首次提交"</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://hansir1321.oss-cn-shanghai.aliyuncs.com/git//GitCommit.png" alt="GitCommit"></p>
+<h5 id="Step-5-将文件推送到远程Github仓库，首先必须得建立一个仓库哈，然后将本地仓库和远程仓库进行关联"><a href="#Step-5-将文件推送到远程Github仓库，首先必须得建立一个仓库哈，然后将本地仓库和远程仓库进行关联" class="headerlink" title="Step 5 : 将文件推送到远程Github仓库，首先必须得建立一个仓库哈，然后将本地仓库和远程仓库进行关联"></a>Step 5 : 将文件推送到远程Github仓库，首先必须得建立一个仓库哈，然后将本地仓库和远程仓库进行关联</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin https://github.com/HongSir15/GitUsage.git</span><br></pre></td></tr></table></figure>
+<p><img src="https://hansir1321.oss-cn-shanghai.aliyuncs.com/git/GitRemote.png" alt="GitRemote"></p>
+<h5 id="Step-6-使用git-push-u-origin-master把本地仓库的项目推送到远程仓库"><a href="#Step-6-使用git-push-u-origin-master把本地仓库的项目推送到远程仓库" class="headerlink" title="Step 6 : 使用git push -u origin master把本地仓库的项目推送到远程仓库"></a>Step 6 : 使用git push -u origin master把本地仓库的项目推送到远程仓库</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+<p><img src="https://hansir1321.oss-cn-shanghai.aliyuncs.com/git/GitPush.png" alt="GitPush"></p>
+<h5 id="查看结果"><a href="#查看结果" class="headerlink" title="查看结果"></a>查看结果</h5><p><img src="https://hansir1321.oss-cn-shanghai.aliyuncs.com/git/result01.png" alt="Result"></p>
+<h5 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h5><p>　　由于新建的远程仓库是空的，所以要加上-u这个参数，等远程仓库里面有了内容之后，下次再从本地库上传内容的时候只需下面这样就可以了<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git pull origin master</span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure></p>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2018年09月26日 11:49</p>
+        <p>原始链接： <a class="post-url" href="/2017/08/07/Git/Git的基本使用/" title="Git的基本使用--将本地的文件Push到Github">http://yoursite.com/2017/08/07/Git/Git的基本使用/</a></p>
+        <footer>
+            <a href="http://yoursite.com">
+                <img src="/images/logo.png" alt="HongSir">
+                HongSir
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃糖~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.jpg">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2017/08/07/Git/Git的基本使用/&title=《Git的基本使用--将本地的文件Push到Github》 — HongSir's Blog&pic=https://hansir1321.oss-cn-shanghai.aliyuncs.com/git/result01.png" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2017/08/07/Git/Git的基本使用/&title=《Git的基本使用--将本地的文件Push到Github》 — HongSir's Blog&source=专注 WEB 开发的技术博客" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/08/07/Git/Git的基本使用/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Git的基本使用--将本地的文件Push到Github》 — HongSir's Blog&url=http://yoursite.com/2017/08/07/Git/Git的基本使用/&via=http://yoursite.com" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2017/08/07/Git/Git的基本使用/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2017/08/07/Git/Git的基本使用/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/GIT/" class="color4">GIT</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Git的基本使用–将本地的文件Push到Github"><span class="post-toc-text">Git的基本使用–将本地的文件Push到Github</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#Step-1-在本地创建一个文件夹-然后用GitBash打开文件夹所在的路径，执行git-init命令"><span class="post-toc-text">Step 1 : 在本地创建一个文件夹,然后用GitBash打开文件夹所在的路径，执行git init命令</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#Step-2-将需要提交的文件都粘贴到该文件夹下，使用git-status查看文件的状态"><span class="post-toc-text">Step 2 : 将需要提交的文件都粘贴到该文件夹下，使用git status查看文件的状态</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#Step-3-使用git-add-将本地文件添加到本地仓库"><span class="post-toc-text">Step 3 : 使用git add . 将本地文件添加到本地仓库</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#Step-4-执行git-commit-m-“Comment”-将本地文件提交到本地仓库"><span class="post-toc-text">Step 4 : 执行git commit -m “Comment” 将本地文件提交到本地仓库</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#Step-5-将文件推送到远程Github仓库，首先必须得建立一个仓库哈，然后将本地仓库和远程仓库进行关联"><span class="post-toc-text">Step 5 : 将文件推送到远程Github仓库，首先必须得建立一个仓库哈，然后将本地仓库和远程仓库进行关联</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#Step-6-使用git-push-u-origin-master把本地仓库的项目推送到远程仓库"><span class="post-toc-text">Step 6 : 使用git push -u origin master把本地仓库的项目推送到远程仓库</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#查看结果"><span class="post-toc-text">查看结果</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#注意："><span class="post-toc-text">注意：</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2018/06/03/Markdown/MarkDown语法认识/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          Markdown语法整理
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2016/09/02/SVN/SVN Learn Basic 03/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">SVN入门教程（三）--上传文件到SVN服务器</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+      &copy; 2018 HongSir<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "http://yoursite.com",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/GIT/">GIT</a><a class="category-link" href="/categories/HTML/">HTML</a><a class="category-link" href="/categories/Markdown/">Markdown</a><a class="category-link" href="/categories/NodeJS/">NodeJS</a><a class="category-link" href="/categories/SVN/">SVN</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/GIT/" style="font-size: 10px;">GIT</a> <a href="/tags/HTML/" style="font-size: 20px;">HTML</a> <a href="/tags/Markdown-syntax/" style="font-size: 10px;">Markdown syntax</a> <a href="/tags/NodeJS/" style="font-size: 10px;">NodeJS</a> <a href="/tags/SVN/" style="font-size: 15px;">SVN</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/">
+                    <i class="fa fa-home"></i><span>主页</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/archives">
+                    <i class="fa fa-archive"></i><span>归档</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/about">
+                    <i class="fa fa-user"></i><span>关于</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/GIT/" style="font-size: 10px;">GIT</a> <a href="/tags/HTML/" style="font-size: 20px;">HTML</a> <a href="/tags/Markdown-syntax/" style="font-size: 10px;">Markdown syntax</a> <a href="/tags/NodeJS/" style="font-size: 10px;">NodeJS</a> <a href="/tags/SVN/" style="font-size: 15px;">SVN</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+</body>
+</html>
